@@ -20,7 +20,7 @@ spec:
         image: docker.elastic.co/kibana/kibana:6.5.4
         env:
         - name: ELASTICSEARCH_URL
-          value: http://elasticsearch:9200/
+          value: http://elasticsearch.elk:9200/
         - name: XPACK_SECURITY_ENABLED
           value: "true"
         #- name: CLUSTER_NAME
