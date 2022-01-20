@@ -34,10 +34,10 @@ spec:
         - containerPort: 5601
           name: http
           protocol: TCP
-      volumes:
-        - name: logtrail-config
-          configMap:
-            name: logtrail-config
+      #volumes:
+      #  - name: logtrail-config
+      #    configMap:
+      #      name: logtrail-config
             
 
 

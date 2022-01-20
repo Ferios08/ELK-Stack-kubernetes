@@ -6,7 +6,7 @@ metadata:
   labels:
     k8s-app: filebeat
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: filebeat
@@ -22,7 +22,7 @@ rules:
   - watch
   - list
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: filebeat
@@ -111,8 +111,8 @@ spec:
         - name: prospectors
           mountPath: /usr/share/filebeat/prospectors.d
           readOnly: true
-        - name: data
-          mountPath: /usr/share/filebeat/data
+        #- name: data
+        #  mountPath: /usr/share/filebeat/data
           subPath: filebeat/
         - name: varlibdockercontainers
           mountPath: /var/lib/docker/containers
@@ -129,8 +129,8 @@ spec:
         configMap:
           defaultMode: 0600
           name: filebeat-prospectors
-      - name: data
-        persistentVolumeClaim:
-          claimName: elk-pvc
+      #- name: data
+      #  persistentVolumeClaim:
+      #    claimName: elk-pvc
 
 ---

@@ -34,7 +34,7 @@ spec:
           mountPath: /usr/share/elasticsearch/data
         env:
           - name: cluster.name
-            value: oidc-ela-cluster
+            value: elasticsearch-cluster
           - name: node.name
             valueFrom:
               fieldRef:
