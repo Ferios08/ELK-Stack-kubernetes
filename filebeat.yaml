@@ -54,12 +54,8 @@ data:
         path: ${path.config}/modules.d/*.yml
         # Reload module configs as they change:
         reload.enabled: false
-    # output.logstash:
-    #   hosts: ['logstash-service:5044']
-    output.elasticsearch:
-      hosts: ["http://elasticsearch:9200"]
-      username: "elastic"
-      password: "changeme"
+    output.logstash:
+      hosts: ['logstash-service:5044']
     setup.kibana.host: "http://kibana.elk:5601"
     setup.kibana.protocol: "http"
 ---
