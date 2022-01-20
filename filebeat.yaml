@@ -60,8 +60,8 @@ data:
       hosts: ["http://elasticsearch:9200"]
       username: "elastic"
       password: "changeme"
-    setup.kibana:
-      host: "kibana.elk:5601"
+    setup.kibana.host: "http://kibana.elk:5601"
+    setup.kibana.protocol: "http"
 ---
 apiVersion: v1
 kind: ConfigMap

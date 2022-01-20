@@ -12,6 +12,7 @@ kubectl apply -f pv-pvc.yaml
 kubectl apply -f elastic-cluster.yaml
 ### For single ES Node ( Test / Dev )
 kubectl apply -f elastic-mono.yaml
+kubectl apply -f logstash.yaml
 kubectl apply -f filebeat.yaml
 kubectl apply -f metricbeat.yaml
 kubectl apply -f kibana.yaml
