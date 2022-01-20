@@ -34,9 +34,13 @@ spec:
           mountPath: /usr/share/elasticsearch/data
         env:
           - name: discovery.type
+            value: single-node
           - name: cluster.name
             value: elasticsearch-node
-            value: single-node
+          - name: node.name
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
           - name: ES_JAVA_OPTS
             value: "-Xms512m -Xmx512m"
       initContainers:
