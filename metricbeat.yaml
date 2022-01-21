@@ -19,11 +19,11 @@ data:
     cloud.id: ${ELASTIC_CLOUD_ID}
     cloud.auth: ${ELASTIC_CLOUD_AUTH}
     output.elasticsearch:
-      hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
+      hosts: ['${ELASTICSEARCH_HOST:elasticsearch.elk}:${ELASTICSEARCH_PORT:9200}']
       username: ${ELASTICSEARCH_USERNAME}
       password: ${ELASTICSEARCH_PASSWORD}
-    setup.kibana:
-      host: "kibana.elk:5601"
+    setup.kibana.host: "http://kibana.elk:5601"
+    setup.kibana.protocol: "http"
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -101,7 +101,7 @@ spec:
         ]
         env:
         - name: ELASTICSEARCH_HOST
-          value: elasticsearch
+          value: elasticsearch.elk
         - name: ELASTICSEARCH_PORT
           value: "9200"
         - name: ELASTICSEARCH_USERNAME
