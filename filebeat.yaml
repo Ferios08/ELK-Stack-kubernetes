@@ -45,10 +45,10 @@ metadata:
 data:
   filebeat.yml: |-
     filebeat.config:
-      prospectors:
-        # Mounted `filebeat-prospectors` configmap:
-        path: ${path.config}/prospectors.d/*.yml
-        # Reload prospectors configs as they change:
+      inputs:
+        # Mounted `filebeat-inputs` configmap:
+        path: ${path.config}/inputs.d/*.yml
+        # Reload inputs configs as they change:
         reload.enabled: false
       modules:
         path: ${path.config}/modules.d/*.yml
@@ -62,7 +62,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: filebeat-prospectors
+  name: filebeat-inputs
   namespace: elk
   labels:
     k8s-app: filebeat
@@ -110,8 +110,8 @@ spec:
           mountPath: /etc/filebeat.yml
           readOnly: true
           subPath: filebeat.yml
-        - name: prospectors
-          mountPath: /usr/share/filebeat/prospectors.d
+        - name: inputs
+          mountPath: /usr/share/filebeat/inputs.d
           readOnly: true
         #- name: data
         #  mountPath: /usr/share/filebeat/data
@@ -127,10 +127,10 @@ spec:
       - name: varlibdockercontainers
         hostPath:
           path: /var/lib/docker/containers
-      - name: prospectors
+      - name: inputs
         configMap:
           defaultMode: 0600
-          name: filebeat-prospectors
+          name: filebeat-inputs
       #- name: data
       #  persistentVolumeClaim:
       #    claimName: elk-pvc
